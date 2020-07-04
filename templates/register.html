@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style media="screen">
+  h1{
+    color:blue;
+  }
+  div{
+    margin-top:150px;
+  }
+
+  body{
+    background-size:100% 350%;
+  }
+</style>
+
+
+{% endblock %}
+
+{% block body %}
+<script type="text/javascript">
+  function Validate(objform){
+  var setpassword = document.getElementById("newpassword").value;
+  var confirmedpassword= document.getElementById("confirmpassword").value;
+  if(setpassword==confirmedpassword){
+    return 'Account successfully created. You will now be redirected to homepage';
+  }
+  else{
+    window.alert('Please make sure password fields match')
+    document.getElementById('username').value=confirmpassword;
+    document.getElementById('confirmpassword').value='';
+    document.getElementById('newpassword').value='';
+    return false;
+  }
+  }
+  </script>
+  <div align = "center" >
+
+
+<form method="POST" id="form1" onsubmit="return Validate(document.getElementById('form1'));" action="{{ url_for('register') }}">
+  <h1>Create Account</h1>
+    <p>
+
+        <label>User name</label>
+        <input type = "text"
+
+               name="username"
+                required/>
+
+      </p>
+      <p>
+          <label>
+              Set new password
+          </label>
+        <input type = "password"
+        id= "newpassword"
+        name = "newpassword" required/>
+      </p>
+      <p>
+        <label>
+            Confirm password
+        </label>
+      <input type = "password"
+      id= "confirmpassword"
+      name = "confirmpassword" required/>
+    </p>
+    <input class = "btn btn-success" type="submit" value="Create account">
+</form>
+</div>
+
+{% endblock %}

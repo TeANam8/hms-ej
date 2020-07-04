@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style media="screen">
+div {
+  border: 1px solid black;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+
+}
+@keyframes example {
+  0%   {color:red; left:0px; top:0px;}
+25%  {color:green; left:200px; top:0px;}
+50%  {color:blue; left:200px; top:200px;}
+75%  {color:green; left:0px; top:200px;}
+100% {color:red; left:0px; top:0px;}
+}
+h1{
+  animation-name: example;
+animation-duration: 30s;
+align:center;
+text-align:center;
+}
+div {
+color:DodgerBlue;
+}
+</div>
+</style>
+{% endblock %}
+
+{% block body %}
+
+<h1> <strong>WELCOME TO ABC HOSPITAL MANAGEMENT SYSTEM!! </strong></h1>
+<div class = "jumbotron" >
+<form method='POST' action="{{ url_for('index') }}" align = "center";>
+    <fieldset animation-name = 'example'>
+      <legend >Enter login credentials</legend>
+      <p>
+        <label>User name</label>
+        <input type = "text"
+              id = "username"
+               name="username"
+                />
+      </p>
+      <p>
+        <label>Password</label>
+        <input type = "password"
+                id = "password"
+                name="password"
+                 />
+      </p>
+      <button type="submit" class = "btn btn-success">Login</button>
+      <br>
+      <br>
+
+      <center>
+      <a href="/register" class = "btn btn-primary">create account</a>
+      {{ message1 }}
+      </center>
+    </fieldset>
+  </form>
+  </div>
+
+{% endblock %}

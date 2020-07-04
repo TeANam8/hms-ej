@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<style>
+  body{
+    background-size:100% 350%
+  }
+    /* Dropdown Button */
+    .dropdown-button {
+        background-color: grey;
+        color: black;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-list {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    /* Links inside the dropdown */
+    .dropdown-list a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: verdana;
+    }
+    /* Change color of dropdown links on hover */
+    .dropdown-list a:hover {
+        background-color: #ddd;
+    }
+    /* Show the dropdown list on hover */
+    .dropdown:hover .dropdown-list {
+        display: block;
+    }
+    /* Change the background color of the dropdown button when the dropdown list is shown */
+    .dropdown:hover .dropdown-button {
+        background-color: #6666ff;
+    }
+    </style>
+  <script>
+
+  </script>
+  <center><h1>ABC Hospital</h1></center>
+  <br>
+  <center>
+  <div class="dropdown">
+    <button class = "btn btn-primary" class="dropdown-button">Patient</button>
+    <div class="dropdown-list">
+      <a href="/patient_register">New patient</a>
+      <a href="/update_patient">Update patient</a>
+      <a href="/delete_patient_record">Delete patient record</a>
+      <a href="/patient_status">Patient Table</a>
+      <a href="/patient_search">Patient Search</a>
+    </div>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="dropdown">
+    <button class = "btn btn-primary" class="dropdown-button">Pharmacy</button>
+    <div class="dropdown-list">
+      <a href="/add_medicine">Add medicine</a>
+      <a href="/issue_medicine">Issue medicine</a>
+      <a href="/edit_medicine">Edit medicine</a>
+      <a href="/view_medicine">View medicines</a>
+      <a href="/view_issued_medicine">View issued medicines</a>
+    </div>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="dropdown">
+    <button class = "btn btn-primary" class="dropdown-button">Diagnostics</button>
+    <div class="dropdown-list">
+      <a href="/add_test">Add test</a>
+      <a href="/issue_test">Issue test</a>
+      <a href="/edit_test">Edit test</a>
+      <a href="/view_tests">View test</a>
+      <a href="/view_issued_test">View issued tests</a>
+
+    </div>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a  class = "btn btn-primary"href="/log_out">Log out</a>
+  </center>
+  <br>
+  <br>
+  <div  align = "center">
+
+<form method="POST" action="{{url_for('issue_test')}}" id=form1>
+    <fieldset>
+        <legend>Issue test</legend>
+        <p>
+            <label>Patient SSN id&nbsp;
+            </label>
+            <input type="text" name="patid" id="patid" required/>
+        </p>
+        <p>
+            <label>Test name&nbsp;</label>
+            <select name="name" id="name">
+            {% for i in data %}
+            <option value="{{i[0]}}">{{i[0]}}</option>
+            {% endfor %}
+            </select>
+        </p>
+        <p>
+            <input  class = "btn btn-success" type="submit" id="submit" name="submit"/>&nbsp;{{message1}}
+        </p>
+    </fieldset>
+
+
+</form>
+</div>
+
+
+
+{% endblock %}

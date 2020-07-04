@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<style>
+    /* Dropdown Button */
+    .dropdown-button {
+        background-color: grey;
+        color: black;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-list {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    /* Links inside the dropdown */
+    .dropdown-list a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-family: verdana;
+    }
+    /* Change color of dropdown links on hover */
+    .dropdown-list a:hover {
+        background-color: #ddd;
+    }
+    /* Show the dropdown list on hover */
+    .dropdown:hover .dropdown-list {
+        display: block;
+    }
+    /* Change the background color of the dropdown button when the dropdown list is shown */
+    .dropdown:hover .dropdown-button {
+        background-color: #6666ff;
+    }
+    </style>
+
+  <script>
+
+  </script>
+  <center><h1>ABC Hospital</h1></center>
+  <br>
+  <center>
+  <div class="dropdown">
+    <button class = "btn btn-primary" class="dropdown-button">Patient</button>
+    <div class="dropdown-list">
+      <a href="/patient_register">New patient</a>
+      <a href="/update_patient">Update patient</a>
+      <a href="/delete_patient_record">Delete patient record</a>
+      <a href="/patient_status">Patient Table</a>
+      <a href="/patient_search">Patient Search</a>
+      <a href="/final_billing">Final billing</a>
+    </div>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="dropdown">
+    <button class = "btn btn-primary" class="dropdown-button">Pharmacy</button>
+    <div class="dropdown-list">
+      <a href="/add_medicine">Add medicine</a>
+      <a href="/issue_medicine">Issue medicine</a>
+      <a href="/edit_medicine">Edit medicine</a>
+      <a href="/view_medicine">View medicines</a>
+      <a href="/view_issued_medicine">View issued medicines</a>
+    </div>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="dropdown">
+    <button class = "btn btn-primary" class="dropdown-button">Diagnostics</button>
+    <div class="dropdown-list">
+      <a href="/add_test">Add test</a>
+      <a href="/issue_test">Issue test</a>
+      <a href="/edit_test">Edit test</a>
+      <a href="/view_tests">View test</a>
+      <a href="/view_issued_test">View issued tests</a>
+
+    </div>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a class = "btn btn-primary" href="/log_out">Log out</a>
+  </center>
+  <br>
+  <br>
+<style>
+    label textarea{
+        vertical-align: top;
+    }
+</style>
+<div align = "center">
+
+<fieldset>
+    <legend>Check details for SSN no&nbsp;</legend>
+    <form method="POST" action="{{ url_for('patient_search') }}" id= 'something1'>
+        <input type='text' name='idno' id='id'/ required>
+        <input class = "btn btn-success" type="submit" name="submit" value="submit"/>
+
+    </form>
+    </fieldset>
+</fieldset>
+<fieldset>
+    <legend>Search patient&nbsp;</legend>
+<form method="POST" action="{{ url_for('patient_search') }}" id= 'something'>
+    <p>
+        <label>
+            Patient SSN id&nbsp;
+        </label>
+        <input type="text" id="ssnid1" name="ssnid1" value="{{ message1 }}" disabled/>
+    </p>
+
+    <p>
+        <label>
+            Name &nbsp;
+        </label>
+        <input type="text" id='name' name="name" value='{{ name1 }}' required/>
+    </p>
+
+    <p>
+        <label>
+            Age&nbsp;
+        </label>
+        <input type="number" id='age' name="age" value='{{ age1 }}' required/>
+    </p>
+    <p>
+        <label>
+            Date of admission &nbsp;
+        </label>
+        <input type="text" id='admission' name="admission" value='{{ checked_in1 }}' required/>
+    </p>
+    <p>
+        <label>
+            Bed&nbsp;
+        </label>
+        <input type="text" id='bed' name="bed" value='{{ bed1 }}' required/>
+    </p>
+
+    <p>
+        <label>Address&nbsp;
+        <textarea id="address" name="address" required/>{{address1}}</textarea>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            City&nbsp;
+        </label>
+        <input type="text" id='city' name="city" value='{{ city1 }}' required/>
+    </p>
+
+    <p>
+        <label>
+            State&nbsp;
+        </label>
+        <input type="text" id='state' name="state" value='{{ state1 }}' required/>
+    </p>
+    <p>
+        <p>
+            <label>
+                Status&nbsp;
+            </label>
+            <input type="text" id='status' name="status" value='{{ status1 }}' required/>
+        </p>
+    <input type="hidden" name="hidden" value="{{ hidden1 }}"/>
+
+    </p>
+    </fieldset>
+</form>
+</div>
+{% endblock %}
